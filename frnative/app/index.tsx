@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, ScrollView, Image } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
@@ -10,10 +10,16 @@ const index = () => {
         horizontal
       >
 
+        <View style={styles.viewContainer1}>
 
+          <Image style={{ width:50, height: 50, borderRadius: 50 }}
+            source={{ uri: "https://gratisography.com/wp-content/uploads/2024/10/gratisography-cool-cat-800x525.jpg" }}
+          />
+          <View>Name</View>
+          <View>Email</View>
 
-        <View style={styles.viewContainer1}></View>
-        
+        </View>
+
 
 
 
@@ -27,7 +33,8 @@ export default index
 
 const styles = StyleSheet.create({
   mainContainer: {
-
+alignItems: "center",
+justifyContent: "center"
 
   },
 
@@ -35,23 +42,9 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     backgroundColor: "skyblue",
-    borderRadius: 50
+  borderRadius: 10
 
   },
-  viewContainer2: {
-    width: 100,
-    height: 100,
-    backgroundColor: "green",
-    borderRadius: 50
-
-  },
-  viewContainer3: {
-    width: 100,
-    height: 100,
-    backgroundColor: "yellow",
-
-    borderRadius: 50
-
-  }
+  
 
 })
