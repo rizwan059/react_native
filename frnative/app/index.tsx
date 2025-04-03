@@ -34,8 +34,7 @@ const index = () => {
           />
           <Text>Name</Text>
           <Text>Email</Text>
-          <Text>Name</Text>
-          <Text>Email</Text>
+          
         </View>
         )}
 
