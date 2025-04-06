@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
-import * as React from 'react';
+import React from 'react';
+import { Link } from 'expo-router';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import Home from '../src/screens/Home'
@@ -7,29 +8,17 @@ import Home from '../src/screens/Home'
 
 const Stack = createNativeStackNavigator();
 
-const MyStack = () => {
-  return (
-    <StackContainer>
-      <Stack.Navigator>
-
-        <Stack.Screen name="Home" component={Home} />
-
-      </Stack.Navigator>
-    </StackContainer>
-  );
-};
 
 
-
-const index = () => {
+const Index = () => {
   return (
 
     <View>
-
+      <Link href="/home">Home</Link>
     </View>
   )
 }
 
-export default index
+export default Index
 
 const styles = StyleSheet.create({})
