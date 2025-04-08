@@ -6,7 +6,7 @@ const Home = ({navigation}) => {
   return (
     <View>
       <Text>Home</Text>
-      <Button title='Profile' onPress={()=>navigation.navigate("Profile", {id: 1, name: 'hi'})}/>
+      <Button title='Profile' onPress={()=>navigation.navigate("Profile")}/>
      
     </View>
   )
