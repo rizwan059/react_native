@@ -39,7 +39,7 @@ const index = () => {
 
 
       {view === 0 && <AllItems data={data} />}
-      {view === 1 && <AllItems />}
+      {view === 1 && <AllItems data={data.filter((item) => item.stock <7)}/>}
       {view === 2 && <CreateScreen />}
 
     </View>
