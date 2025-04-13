@@ -6,24 +6,42 @@ const CreateScreen = ({ data, setdata }) => {
 
   const [itemName, setitemName] = useState('')
   const [itemStock, setitemStock] = useState('')
+  const [isEdit, setisEdit] = useState(false)
+  const [editItemId, seteditItemId] = useState(null)
 
-  // button's handlers starts here
+  // button's handlers starts here. button's handlers starts here. 
 
   // add items handler button starts here
-  const handlerAddItem = ()=>{
+  const handlerAddItem = () => {
     const newItem = {
       id: Date.now(),
       name: itemName,
       stock: itemStock
     }
-setdata([...data, newItem])
-setitemName('')
-setitemStock('')
+    setdata([...data, newItem])
+    setitemName('')
+    setitemStock('')
+    setisEdit(false)
   }
-// delete items handler button starts here
-const handlerDeleteItem = (id)=>{
-setdata(data.filter((item)=> item.id !== id))
-}
+  // delete items handler button starts here
+  const handlerDeleteItem = (id) => {
+    setdata(data.filter((item) => item.id !== id))
+  }
+ // edit items handler button starts here
+  const handlerEditItem = (item)=>{
+    setisEdit(true)
+setitemName(item.name);
+seteditItemId(item.id);
+
+  }
+
+// update items handler button starts here
+  const handlerUpdateItem = ()=>{
+setdata(data.map((item) => (
+  item.id === editItemId ? {...item, name: item.name, stock: itemStock} : item
+)))
+  }
+
   return (
     <View style={styles.container}>
       <TextInput
@@ -42,8 +60,8 @@ setdata(data.filter((item)=> item.id !== id))
         onChangeText={(item) => setitemStock(item)}
       />
 
-      <Pressable style={styles.addButton} onPress={()=>handlerAddItem()}>
-        <Text style={styles.itemAddButtonText}>ADD ITEM IN STOCK</Text>
+      <Pressable style={styles.addButton} onPress={() => isEdit ? handlerUpdateItem() : handlerAddItem()}>
+        <Text style={styles.itemAddButtonText}>{isEdit ? 'CLICK TO UPDATE' : 'ADD ITEM IN STOCK'}</Text>
       </Pressable>
 
 
@@ -59,12 +77,17 @@ setdata(data.filter((item)=> item.id !== id))
             <View style={[styles.singleItem, { backgroundColor: item.stock < 7 ? "#FFCCCC" : "#D7F6BF" }]}>
               <Text style={styles.itemText}>{item.name}</Text>
 
-              <View style={{flexDirection:'row', gap:30}}>
-              <Text style={styles.itemText}>{item.stock}</Text>
-                <Text style={styles.itemText}>Edit</Text>
-                 {/* item delete button starts here */}
-                <Pressable onPress={()=>handlerDeleteItem()}>
-                <Text style={styles.itemText}>Delete</Text>
+              <View style={{ flexDirection: 'row', gap: 30 }}>
+                <Text style={styles.itemText}>{item.stock}</Text>
+
+                {/* item edit button starts here */}
+                <Pressable onPress={() => handlerEditItem(item)}>
+                  <Text style={styles.itemText}>Edit</Text>
+                </Pressable>
+
+                {/* item delete button starts here */}
+                <Pressable onPress={() => handlerDeleteItem(item.id)}>
+                  <Text style={styles.itemText}>Delete</Text>
                 </Pressable>
               </View>
 
