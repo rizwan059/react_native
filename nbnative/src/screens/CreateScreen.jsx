@@ -2,11 +2,28 @@ import { useState } from 'react'
 import { StyleSheet, Text, View, TextInput, Pressable, FlatList } from 'react-native'
 
 
-const CreateScreen = ({ data }) => {
+const CreateScreen = ({ data, setdata }) => {
 
   const [itemName, setitemName] = useState('')
   const [itemStock, setitemStock] = useState('')
 
+  // button's handlers starts here
+
+  // add items handler button starts here
+  const handlerAddItem = ()=>{
+    const newItem = {
+      id: Date.now(),
+      name: itemName,
+      stock: itemStock
+    }
+setdata([...data, newItem])
+setitemName('')
+setitemStock('')
+  }
+// delete items handler button starts here
+const handlerDeleteItem = (id)=>{
+setdata(data.filter((item)=> item.id !== id))
+}
   return (
     <View style={styles.container}>
       <TextInput
@@ -25,7 +42,7 @@ const CreateScreen = ({ data }) => {
         onChangeText={(item) => setitemStock(item)}
       />
 
-      <Pressable style={styles.addButton}>
+      <Pressable style={styles.addButton} onPress={()=>handlerAddItem()}>
         <Text style={styles.itemAddButtonText}>ADD ITEM IN STOCK</Text>
       </Pressable>
 
@@ -41,17 +58,21 @@ const CreateScreen = ({ data }) => {
 
             <View style={[styles.singleItem, { backgroundColor: item.stock < 7 ? "#FFCCCC" : "#D7F6BF" }]}>
               <Text style={styles.itemText}>{item.name}</Text>
+
+              <View style={{flexDirection:'row', gap:30}}>
               <Text style={styles.itemText}>{item.stock}</Text>
+                <Text style={styles.itemText}>Edit</Text>
+                 {/* item delete button starts here */}
+                <Pressable onPress={()=>handlerDeleteItem()}>
+                <Text style={styles.itemText}>Delete</Text>
+                </Pressable>
+              </View>
+
             </View>
 
           )}
           contentContainerStyle={{ gap: 10 }}
         />
-      </View>
-
-      <View>
-        <Text>Edit</Text>
-        <Text>Delete</Text>
       </View>
 
     </View>
@@ -110,7 +131,7 @@ const styles = StyleSheet.create({
 
   singleItem: {
     flexDirection: "row",
-
+    justifyContent: 'space-between',
     paddingHorizontal: 35,
     fontWeight: "bold",
     fontSize: 15,
