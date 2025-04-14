@@ -31,7 +31,8 @@ const CreateScreen = ({ data, setdata }) => {
   const handlerEditItem = (item)=>{
     setisEdit(true)
 setitemName(item.name);
-seteditItemId(item.id);
+seteditItemId(item.id)
+
 
   }
 
