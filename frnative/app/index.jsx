@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, ScrollView, Image, FlatList } from 'react-native'
-import React from 'react'
+
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 
@@ -28,20 +28,20 @@ const index = () => {
           data={dummy}
           renderItem={({ item }) => (
 
-        <View style={styles.viewContainer1}>
-          <Image style={{ width: 50, height: 50, borderRadius: 50 }}
-            source={{ uri: "https://gratisography.com/wp-content/uploads/2024/10/gratisography-cool-cat-800x525.jpg" }}
-          />
-          <Text>Name</Text>
-          <Text>Email</Text>
-          
-        </View>
-        )}
+            <View style={styles.viewContainer1}>
+              <Image style={{ width: 50, height: 50, borderRadius: 50 }}
+                source={{ uri: "https://gratisography.com/wp-content/uploads/2024/10/gratisography-cool-cat-800x525.jpg" }}
+              />
+              <Text>Name</Text>
+              <Text>Email</Text>
 
-         keyExtractor={item =>item.id}
-         numColumns={2}
-         columnWrapperStyle={{gap:10}}
-         ItemSeparatorComponent={<View style={{height:10}}/>}
+            </View>
+          )}
+
+          keyExtractor={item => item.id}
+          numColumns={2}
+          columnWrapperStyle={{ gap: 10 }}
+          ItemSeparatorComponent={<View style={{ height: 10 }} />}
         />
 
       </View>

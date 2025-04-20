@@ -5,9 +5,10 @@ import React from 'react'
 
 const Navigation = () => {
   return (
-    <View>
+    <View style={styles.mainContainer}>
+          <Text style={styles.mainHeadingText}>Expensify</Text>
         <Pressable>
-          <Text>Home</Text>
+          <Text>Logout</Text>
         </Pressable>
     </View>
   )
@@ -17,4 +18,11 @@ const Navigation = () => {
 
 export default Navigation
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  mainContainer:{
+    flex:1
+  },
+  mainHeadingText:{
+    fontSize: 30
+  }
+})
