@@ -1,28 +1,15 @@
-import { StyleSheet, Text, View, Pressable } from 'react-native'
-
-
+import { StyleSheet, Text, View, Pressable, Button } from 'react-native'
 import React from 'react'
+import Search from './Search'
 
-const Navigation = () => {
+const Home = ({navigation}) => {
   return (
-    <View style={styles.mainContainer}>
-          <Text style={styles.mainHeadingText}>Expensify</Text>
-        <Pressable>
-          <Text>Logout</Text>
-        </Pressable>
+    <View>
+      <Button title="Search" onPress={() => navigation.navigate("Search")}></Button>
     </View>
   )
 }
 
+export default Home
 
-
-export default Navigation
-
-const styles = StyleSheet.create({
-  mainContainer:{
-    flex:1
-  },
-  mainHeadingText:{
-    fontSize: 30
-  }
-})
+const styles = StyleSheet.create({})
