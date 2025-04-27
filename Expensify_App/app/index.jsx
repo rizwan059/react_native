@@ -11,8 +11,8 @@ const Stack = createNativeStackNavigator();
 const index = () => {
   return (
     <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen  name="Home" component={Home} />
-      <Stack.Screen  name="Search" component={Search} options={{headerShown: "false"}} />
+      <Stack.Screen  name="Home" component={Home}  />
+      <Stack.Screen  name="Search" component={Search}  />
     </Stack.Navigator>
   )
 }

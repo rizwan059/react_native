@@ -4,18 +4,31 @@ import Search from './Search'
 
 const Home = ({ navigation }) => {
   return (
-    <SafeAreaView>
-      <View>
-        <Text style={styles.mainHeadingText}>Expensify</Text>
-        <Pressable>
-          <Text onPress={() => navigation.navigate("Search")}>Logout</Text>
+    <SafeAreaView style={styles.homeMainContainer}>
+
+      <View style={styles.homeFirstView}>
+
+        <Text style={styles.homeMainHeadingText}>Expensify</Text>
+
+        <Pressable style={styles.buttonLogout}>
+          <Text style={styles.textLogout} onPress={() => navigation.navigate("Search")} >Logout</Text>
         </Pressable>
-
       </View>
 
-      <View>
-        <Image style={styles.mainImg} source={require('../src/images/inventory.png')} />
+      <View style={styles.homeImageView}>
+        <Image style={styles.mainImg} source={require('../src/images/inv.png')} />
       </View>
+
+      <View style={styles.recentTripsView}>
+
+        <Text style={styles.recentTripsText}>Recent Trips</Text>
+
+        <Pressable style={styles.buttonRecentTrips}>
+          <Text style={styles.textAddTrips}>Add Trips</Text>
+        </Pressable>
+      </View>
+
+
 
     </SafeAreaView>
   )
@@ -24,15 +37,69 @@ const Home = ({ navigation }) => {
 export default Home
 
 const styles = StyleSheet.create({
-  mainHeadingText: {
-    fontSize: 30
+
+  homeMainContainer: {
+    flex: 1
   },
-  mainImg:{
-    flex: 1,
-    justifyContent: 'center',
-    width:360,
-    height:500,
-    resizeMode: 'stretch',
-    
-  }
+  homeFirstView: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 10,
+    alignItems: "center"
+  },
+  homeMainHeadingText: {
+    fontSize: 30,
+    fontWeight: "bold"
+  },
+  buttonLogout: {
+    backgroundColor: "white",
+    borderRadius: 500,
+    paddingHorizontal: 20,
+    paddingVertical: 6,
+    marginTop: 15
+
+  },
+  textLogout: {
+    color: "black",
+    fontSize: 15,
+    fontWeight: "bold"
+  },
+  homeImageView: {
+    flexDirection: "row",
+    justifyContent: "center",
+    backgroundColor: "#D4C9BE",
+    marginHorizontal: 30,
+    paddingVertical: 20,
+    marginTop: 20,
+    borderRadius: 30
+  },
+  mainImg: {
+    height: 220,
+    width: 220,
+
+  },
+
+  recentTripsView: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 10,
+    alignItems: "center"
+  },
+  recentTripsText: {
+    fontSize: 20,
+    fontWeight: "bold"
+  },
+  buttonRecentTrips: {
+    backgroundColor: "white",
+    borderRadius: 500,
+    paddingHorizontal: 20,
+    paddingVertical: 6,
+    marginTop: 15
+
+  },
+  textAddTrips: {
+    color: "black",
+    fontSize: 15,
+    fontWeight: "bold"
+  },
 })
